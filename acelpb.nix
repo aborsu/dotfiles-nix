@@ -41,6 +41,12 @@
       package = pkgs.mysql;
     };
 
+    postgresql.enable = true;
+
+    mysql = {
+      enable = true;
+      package = pkgs.mysql;
+    };
 
     xserver.enable = false;
 
