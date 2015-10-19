@@ -36,12 +36,10 @@
 
   services = {
 
-    mysql = {
+    postgresql = {
       enable = true;
-      package = pkgs.mysql;
+      package = pkgs.postgresql94;
     };
-
-    postgresql.enable = true;
 
     mysql = {
       enable = true;
@@ -64,7 +62,14 @@
         {
           hostName = "acelpb.com";
           serverAliases = [ "acelpb.com" "www.acelpb.com" ];
-          documentRoot = "/www";
+          extraSubservices = [
+            { 
+              serviceType = "owncloud";
+              dbPassword = "owncloud";
+              adminPassword = "owncloud";
+              dbUser = "owncloud";
+            }
+          ];
           sslServerCert = "/var/.ssl/ssl.cert";
           sslServerKey = "/var/.ssl/ssl.key";
           enableSSL = true;
