@@ -50,7 +50,7 @@
 
     openssh = {
       enable = true;
-      permitRootLogin = "no";
+      permitRootLogin = "yes";
     };
 
     httpd = {
