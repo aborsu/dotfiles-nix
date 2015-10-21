@@ -59,30 +59,34 @@
       enablePHP = true;
 
       virtualHosts = [
-        {
-          hostName = "acelpb.com";
-          extraSubservices = [
-            {
-              serviceType = "owncloud";
-              trustedDomain = "acelpb.com";
-              dbUser = "owncloud";
-              dbPassword = "SECRET";
-              adminUser = "aborsu"
-              adminPassword = "SECRET";
-            }
-          ];
-          sslServerCert = "/var/.ssl/ssl.cert";
-          sslServerKey = "/var/.ssl/ssl.key";
-          enableSSL = true;
+        { # Catches all connections to unspecified hosts.
+          documentRoot = "/www";
         }
-        {
+        { # Forces all connections on acelpb.com to https
           hostName = "acelpb.com";
-          serverAliases = [ "acelpb.com" "www.acelpb.com" ];
           extraConfig = ''
             RewriteEngine On
             RewriteCond %{HTTPS} off
             RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
           '';
+        }
+        { # hostname acelpb.com with document root and owncloud
+          hostName = "acelpb.com";
+          documentRoot = "/wwwacelpb";
+      
+          extraSubservices = [
+            {
+              trustedDomain = "acelpb.com";
+              serviceType = "owncloud";
+              dbUser = "owncloud";
+              dbPassword = "SECRET";
+              adminUser = "aborsu";
+              adminPassword = "SECRET";
+            }
+          ];
+          sslServerCert = "/home/aborsu/.ssl/ssl.cert";
+          sslServerKey = "/home/aborsu/.ssl/ssl.key";
+          enableSSL = true;
         }
       ];
     };
