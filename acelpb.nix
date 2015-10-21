@@ -61,13 +61,14 @@
       virtualHosts = [
         {
           hostName = "acelpb.com";
-          serverAliases = [ "acelpb.com" "www.acelpb.com" ];
           extraSubservices = [
-            { 
+            {
               serviceType = "owncloud";
-              dbPassword = "owncloud";
-              adminPassword = "owncloud";
+              trustedDomain = "acelpb.com";
               dbUser = "owncloud";
+              dbPassword = "SECRET";
+              adminUser = "aborsu"
+              adminPassword = "SECRET";
             }
           ];
           sslServerCert = "/var/.ssl/ssl.cert";
