@@ -75,6 +75,7 @@
                   dbName = "owncloud705";
                   adminUser = "aborsu";
                   adminPassword = "owncloud705";
+                  dataDir = "/var/lib/owncloud705";
                 }
                 {
                   urlPrefix = "/owncloud70";
@@ -86,6 +87,7 @@
                   dbName = "owncloud70";
                   adminUser = "aborsu";
                   adminPassword = "owncloud70";
+                  dataDir = "/var/lib/owncloud70";
                 }
                 {
                   urlPrefix = "/owncloud80";
@@ -97,6 +99,7 @@
                   dbName = "owncloud80";
                   adminUser = "aborsu";
                   adminPassword = "owncloud80";
+                  dataDir = "/var/lib/owncloud80";
                 }
                 {
                   urlPrefix = "/owncloud81";
@@ -108,6 +111,7 @@
                   dbName = "owncloud81";
                   adminUser = "aborsu";
                   adminPassword = "owncloud81";
+                  dataDir = "/var/lib/owncloud81";
                 }
                 {
                   urlPrefix = "/owncloud82";
@@ -119,6 +123,7 @@
                   dbName = "owncloud82";
                   adminUser = "aborsu";
                   adminPassword = "owncloud82";
+                  dataDir = "/var/lib/owncloud82";
                 }
               ];
             }
