@@ -24,6 +24,7 @@
     wget
   ];
 
+  systemd.services.httpd.environment.SSL_CERT_FILE = "/home/aborsu/.ssl/ssl.crt";
 
   services = {
 
@@ -76,8 +77,8 @@
               adminPassword = builtins.readFile ./private/owncloud.adminPassword;
             }
           ];
-          sslServerCert = builtins.toFile "ssl.crt" (builtins.readFile ./private/acelpb_local.crt);
-          sslServerKey = builtins.toFile "ssl.key" (builtins.readFile ./private/acelpb_local.key);
+          sslServerCert = "/home/aborsu/.ssl/ssl.cert";;
+          sslServerKey = "/home/aborsu/.ssl/ssl.key";;
           enableSSL = true;
         }
       ];
