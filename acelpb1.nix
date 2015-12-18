@@ -33,7 +33,7 @@
 
     xserver.enable = false;
 
-    httpd = let domain1 = "acelpb.local"; in {
+    httpd = let domain1 = "acelpb.com"; in {
       enable = true;
       adminAddr="a.borsu@gmail.com";
       enablePHP = true;
