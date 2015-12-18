@@ -7,9 +7,6 @@
   networking.firewall.allowPing = true;
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
   # Select internationalisation properties.
   i18n.defaultLocale = "fr_BE.UTF-8";
   time.timeZone = "Europe/Brussels";
