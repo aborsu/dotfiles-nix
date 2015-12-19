@@ -22,6 +22,17 @@
       deployment.targetHost = "192.168.56.11";
       networking.interfaces.eth1.ip4 = [ { address = "192.168.56.11"; prefixLength = 24; } ];
 
+      deployment.virtualbox.sharedFolders.myNix = {
+            hostPath = "/Users/aborsu/nix";
+            readOnly = false;
+          };
+
+      fileSystems."/root/nix" = {
+        fsType = "vboxsf";
+        device = "myNix";
+        options = "rw";
+      };
+
       # Select internationalisation properties.
       i18n.defaultLocale = "fr_BE.UTF-8";
       time.timeZone = "Europe/Brussels";
