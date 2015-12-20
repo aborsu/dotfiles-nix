@@ -33,6 +33,12 @@
 
     xserver.enable = false;
 
+    jenkins = {
+      enable = true;
+      extraOptions = [ "--prefix=/jenkins" "--httpListenAddress=localhost" ];
+      port = 2711;
+    };
+
     httpd = let domain1 = "acelpb.com"; in {
       enable = true;
       adminAddr="a.borsu@gmail.com";
@@ -62,6 +68,19 @@
                 AllowOverride FileInfo
                 Require all granted
               </Directory>
+
+
+              ProxyPass         /jenkins  http://localhost:2711/jenkins nocanon
+              ProxyPassReverse  /jenkins  http://localhost:2711/jenkins
+              ProxyRequests     Off
+              AllowEncodedSlashes NoDecode
+
+              # Local reverse proxy authorization override
+              # Most unix distribution deny proxy by default (ie /etc/apache2/mods-enabled/proxy.conf in Ubuntu)
+              <Proxy http://localhost:2711/jenkins*>
+                Order deny,allow
+                Allow from all
+              </Proxy>
             '';
 
           extraSubservices = [
